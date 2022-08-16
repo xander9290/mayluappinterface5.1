@@ -12,6 +12,23 @@ function App() {
   useEffect(() => {
     if (!session.login) setModalLogin(true);
   }, [session]);
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", function (e) {
+      e.preventDefault();
+      e.returnValue = "";
+    });
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    return () => {
+      window.removeEventListener("beforeunload", function (e) {
+        e.preventDefault();
+        e.returnValue = "";
+      });
+      document.removeEventListener("contextmenu", (e) => e.preventDefault());
+    };
+  }, []);
+
   return (
     <div className="container-fluid bg-secondary">
       <Nav />
