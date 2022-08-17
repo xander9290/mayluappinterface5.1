@@ -55,7 +55,7 @@ function FormCaja({ setXcaja }) {
   };
 
   return (
-    <form className="card bg-white" onSubmit={handleSubmit}>
+    <form className="card" onSubmit={handleSubmit}>
       <div className="card-header p-1">
         <h5 className="card-title">Retiros y Depósitos</h5>
       </div>

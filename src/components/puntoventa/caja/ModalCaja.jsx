@@ -35,9 +35,9 @@ function ModalCaja({ show, onHide }) {
       onExited={handleExited}
       dialogClassName="caja-modal"
     >
-      <div className="container-fluid bg-dark user-select-none">
+      <div className="container-fluid bg-dark user-select-none main">
         <div className="row">
-          <div className="col-md-12 p-1 d-flex justify-content-between bg-secondary">
+          <div className="col-md-12 p-1 d-flex justify-content-between bg-success">
             <h3>Movimientos en Caja</h3>
             <button className="btn btn-danger" type="button" onClick={onHide}>
               Cerrar

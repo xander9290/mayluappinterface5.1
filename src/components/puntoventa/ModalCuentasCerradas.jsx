@@ -144,9 +144,9 @@ function ModalCuentasCerradas({ show, onHide }) {
         onExited={handleExited}
         dialogClassName="cuentas-cerradas-modal user-select-none"
       >
-        <div className="container-fluid bg-dark">
+        <div className="container-fluid bg-dark main">
           <div className="row">
-            <div className="col-md-12 p-1 d-flex justify-content-between bg-secondary">
+            <div className="col-md-12 p-1 d-flex justify-content-between bg-success">
               <h4>
                 Cuentas Cerradas
                 <span className="badge bg-primary ms-2">
@@ -179,7 +179,7 @@ function ModalCuentasCerradas({ show, onHide }) {
               <div className="btn-group dropdown ms-2">
                 <button
                   type="button"
-                  className="btn btn-success dropdown-toggle text-uppercase btn-lg text-dark"
+                  className="btn btn-success border-dark dropdown-toggle text-uppercase btn-lg text-dark"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >

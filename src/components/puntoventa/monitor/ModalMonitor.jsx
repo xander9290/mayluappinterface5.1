@@ -409,9 +409,9 @@ function ModalMonitor({ show, onHide }) {
         onExited={handleExited}
         dialogClassName="monitor-venta-modal"
       >
-        <div className="container-fluid bg-dark">
+        <div className="container-fluid main">
           <div className="row">
-            <div className="col-md-12 p-1 d-flex justify-content-between bg-secondary">
+            <div className="col-md-12 p-1 d-flex justify-content-between bg-success">
               <h3>Monitor de Ventas</h3>
               <form onSubmit={handleSubmitFecha} className="d-flex">
                 <input
@@ -420,7 +420,7 @@ function ModalMonitor({ show, onHide }) {
                   value={fecha.fecha1}
                   max={formatearFecha(Date.now()).fecha}
                   onChange={handleFecha}
-                  className="form-control form-control-lg"
+                  className="form-control"
                   required
                 />
                 <input
@@ -429,10 +429,10 @@ function ModalMonitor({ show, onHide }) {
                   value={fecha.fecha2}
                   max={formatearFecha(Date.now()).fecha}
                   onChange={handleFecha}
-                  className="form-control form-control-lg"
+                  className="form-control"
                   required
                 />
-                <button type="submit" className="btn btn-primary btn-lg">
+                <button type="submit" className="btn btn-primary">
                   <i className="bi bi-search"></i>
                 </button>
               </form>

@@ -24,13 +24,13 @@ function TableCaja({ setXcaja }) {
   };
 
   return (
-    <div className="card bg-white">
+    <div className="card">
       <div className="card-header p-1">
         <h5 className="card-title">Movimientos</h5>
       </div>
       <div
         style={{ height: "500px", overflowY: "scroll", overflowX: "scroll" }}
-        className="card-body p-0"
+        className="card-body p-1 bg-white"
       >
         <table className="table table-bordered text-dark text-uppercase">
           <thead>
@@ -74,7 +74,7 @@ function TableCaja({ setXcaja }) {
                 </th>
                 <td valign="middle">{caja.concepto}</td>
                 <td
-                  valign="bottom"
+                  valign="middle"
                   className={`text-center fw-bold ${
                     caja.tipo === "retiro" ? "bg-danger" : "bg-success"
                   }`}
