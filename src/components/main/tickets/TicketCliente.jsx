@@ -69,7 +69,7 @@ function TicketCliente({ show, onHide, cuenta }) {
             font-weight: bold;
         }
         #totalInfo {
-           padding-right: 20px;
+           padding-right: 40px;
         }
         ul {
             text-align: right;
@@ -253,7 +253,7 @@ function TicketCliente({ show, onHide, cuenta }) {
               <tr>
                 <th>cant</th>
                 <th>desc</th>
-                <th>importe</th>
+                <th style={{ textAlign: "start" }}>importe</th>
               </tr>
             </thead>
             <tbody>
@@ -278,7 +278,7 @@ function TicketCliente({ show, onHide, cuenta }) {
                       ))}
                     </small>
                   </td>
-                  <td style={{ textAlign: "center" }} valign="top">
+                  <td style={{ textAlign: "start" }} valign="top">
                     <p>${item.importe}</p>
                   </td>
                 </tr>

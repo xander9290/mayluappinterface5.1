@@ -128,9 +128,9 @@ function ModalDetalle({
         onExited={handleExited}
         size="xl"
       >
-        <div className="container-fluid bg-dark user-select-none">
+        <div className="container-fluid bg-dark user-select-none main">
           <div className="row">
-            <div className="col-md-12 p-1 d-flex justify-content-between bg-dark">
+            <div className="col-md-12 bg-success p-1 d-flex justify-content-between">
               <h3>
                 Detalle de la orden {cuenta.orden}{" "}
                 {cuenta.servicio === "pll" ? "Para LLevar" : cuenta.servicio}
@@ -139,21 +139,21 @@ function ModalDetalle({
                 onClick={() => targetCapturaModal()}
                 disabled={cuenta.impreso ? true : false}
                 type="button"
-                className="btn btn-success btn-lg text-uppercase text-dark fw-bold"
+                className="btn btn-success btn-lg text-uppercase text-dark fw-bold border-dark"
               >
                 <i className="bi bi-card-list"></i> capturar
               </button>
               <button
                 onClick={targetTicketNegocio}
                 type="button"
-                className="btn btn-success btn-lg text-uppercase text-dark fw-bold"
+                className="btn btn-success btn-lg text-uppercase text-dark fw-bold border-dark"
               >
                 <i className="bi bi-printer"></i> imprimir
               </button>
               <div className="btn-group dropdown">
                 <button
                   type="button"
-                  className="btn btn-success dropdown-toggle text-uppercase btn-lg text-dark fw-bold"
+                  className="btn btn-success dropdown-toggle text-uppercase btn-lg text-dark fw-bold border-dark"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >

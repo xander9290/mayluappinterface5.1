@@ -20,7 +20,7 @@ const initialMedios = {
   medioName: "",
 };
 
-function ModalPagar({ show, onHide, targetModalTicketCliente }) {
+function ModalPagar({ show, onHide, targetModalTicketCliente, closeDetalle }) {
   const { cuenta, updateCuenta, reiniciarCuenta, otrosMedios, abrirCajon } =
     appContext();
 
@@ -124,19 +124,19 @@ function ModalPagar({ show, onHide, targetModalTicketCliente }) {
     if (cuenta.servicio === "domicilio") {
       const res = await updateCuenta(cuenta._id, newCuenta);
       if (res) {
-        await abrirCajon();
-        reiniciarCuenta();
         closeDetalle();
         onHide();
+        await abrirCajon();
+        reiniciarCuenta();
       }
     } else {
       const res = await updateCuenta(cuenta._id, newCuenta);
       if (res) {
         if (imprimir) targetModalTicketCliente();
-        await abrirCajon();
-        reiniciarCuenta();
         closeDetalle();
         onHide();
+        await abrirCajon();
+        reiniciarCuenta();
       }
     }
   };

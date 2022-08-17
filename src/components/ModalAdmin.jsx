@@ -29,7 +29,7 @@ function ModalAdmin({
     >
       <div className="container-fluid">
         <Modal.Header className="row p-0">
-          <div className="col-md-12 p-1 d-flex justify-content-between">
+          <div className="col-md-12 p-1 d-flex bg-success justify-content-between">
             <h4>{title}</h4>
             <button className="btn btn-danger" type="button" onClick={onHide}>
               Cerrar

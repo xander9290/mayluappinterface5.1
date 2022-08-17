@@ -280,7 +280,7 @@ function ModalResumen({
                 vales: ${declaracionOtros.vales}
               </p>
               <p>-------------------------------------</p>
-              <table>
+              <table style={{ width: "100%" }}>
                 <thead>
                   <tr>
                     <th>denominación</th>
@@ -288,11 +288,12 @@ function ModalResumen({
                     <th>importe</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style={{ textAlign: "center" }}>
                   <tr
                     style={{
                       visibility:
                         declaracionEfectivo.mil.importe > 0 ? "" : "collapse",
+                      textAlign: "center",
                     }}
                   >
                     <td>$100</td>

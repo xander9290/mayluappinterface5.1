@@ -257,6 +257,7 @@ function BotoneraLateral() {
         show={modalPagar}
         onHide={() => setModalPagar(false)}
         targetModalTicketCliente={targetModalTicketCliente}
+        closeDetalle={() => setModalDetalle(false)}
       />
       <ModalAsignarRepartidor
         show={modalAsignarRepartidor}

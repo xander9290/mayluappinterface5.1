@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { appContext } from "../../context/MainContext";
+import ModalClientes from "../administracion/clientes/ModalClientes";
 import Operadores from "../administracion/operadores/Operadores";
 
 function AdminItem() {
   const { session } = appContext();
+
+  const [modalClientes, setModalClientes] = useState(false);
   const [modalOperadores, setModalOperadores] = useState(false);
+
+  const targetModalClientes = () => {
+    setModalClientes(!modalClientes);
+  };
 
   const targetModalOperadores = () => {
     setModalOperadores(true);
   };
+
   return (
     <>
       <li className="nav-item dropdown">
@@ -27,7 +35,11 @@ function AdminItem() {
           <a href="#" className="dropdown-item fs-5 py-2">
             Almacén
           </a>
-          <a href="#" className="dropdown-item fs-5 py-2">
+          <a
+            onClick={targetModalClientes}
+            href="#"
+            className="dropdown-item fs-5 py-2"
+          >
             Clientes
           </a>
           <a
@@ -45,6 +57,7 @@ function AdminItem() {
           </a>
         </div>
       </li>
+      <ModalClientes show={modalClientes} onHide={targetModalClientes} />
       <Operadores
         show={modalOperadores}
         onHide={() => setModalOperadores(false)}

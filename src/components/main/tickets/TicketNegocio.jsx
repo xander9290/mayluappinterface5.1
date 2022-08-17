@@ -24,7 +24,7 @@ function TicketNegocio({ show, onHide, cuenta }) {
       font-weight: bold;
   }
   #totalInfo {
-     padding-right: 20px;
+     padding-right: 40px;
   }
   ul {
       text-align: right;
@@ -130,7 +130,7 @@ function TicketNegocio({ show, onHide, cuenta }) {
                   ))}
                 </small>
               </td>
-              <td style={{ textAlign: "center" }} valign="top">
+              <td style={{ textAlign: "start" }} valign="top">
                 <p>${item.importe}</p>
               </td>
             </tr>
@@ -171,7 +171,7 @@ function TicketNegocio({ show, onHide, cuenta }) {
                   ))}
                 </small>
               </td>
-              <td style={{ textAlign: "center" }} valign="top">
+              <td style={{ textAlign: "start" }} valign="top">
                 <p>${item.importe}</p>
               </td>
             </tr>
@@ -212,7 +212,7 @@ function TicketNegocio({ show, onHide, cuenta }) {
                   ))}
                 </small>
               </td>
-              <td style={{ textAlign: "center" }} valign="top">
+              <td style={{ textAlign: "start" }} valign="top">
                 <p>${item.importe}</p>
               </td>
             </tr>
@@ -253,7 +253,7 @@ function TicketNegocio({ show, onHide, cuenta }) {
                   ))}
                 </small>
               </td>
-              <td style={{ textAlign: "center" }} valign="top">
+              <td style={{ textAlign: "start" }} valign="top">
                 ${item.importe}
               </td>
             </tr>

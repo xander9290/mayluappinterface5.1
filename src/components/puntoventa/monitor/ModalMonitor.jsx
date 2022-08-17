@@ -4,6 +4,7 @@ import { formatearFecha } from "../../../assets/helpers";
 import { appContext } from "../../../context/MainContext";
 import ModalAlert from "../../ModalAlert";
 import ModalConfirm from "../../ModalConfirm";
+import ModalDeclaracion from "./ModalDeclaracion";
 import ModalDetallado from "./ModalDetallado";
 import ModalResumen from "./ModalResumen";
 
@@ -376,7 +377,7 @@ function ModalMonitor({ show, onHide }) {
   };
 
   const imprimirResumen = async () => {
-    await abrirCajon();
+    //await abrirCajon();
     setResumen(true);
   };
 
@@ -599,7 +600,7 @@ function ModalMonitor({ show, onHide }) {
           productos={productosDetallado}
           operador={session.operador}
         />
-        {/* <DeclaracionModal
+        <ModalDeclaracion
           show={declaracion}
           onHide={() => setDeclaracion(false)}
           declaracionEfectivo={declaracionEfectivo}
@@ -612,7 +613,7 @@ function ModalMonitor({ show, onHide }) {
           totalDeclaradoOTros={totalDeclaradoOTros}
           setTotalDeclaradoOTros={setTotalDeclaradoOTros}
           initDeclaracionOtros={initDeclaracionOtros}
-        /> */}
+        />
         <ModalAlert
           show={modalAlert.show}
           onHide={() => setModalAlert({ show: false, msg: "" })}
