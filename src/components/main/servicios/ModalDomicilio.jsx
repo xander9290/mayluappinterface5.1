@@ -195,9 +195,9 @@ function ModalDomicilio({ show, onHide, targetModalCaptura }) {
         dialogClassName="modal-form-domicilio"
         size="sm"
       >
-        <div className="container-fluid bg-dark">
+        <div className="container-fluid main">
           <div className="row">
-            <div className="col-md-12 p-1 d-flex justify-content-between bg-secondary">
+            <div className="col-md-12 p-1 d-flex justify-content-between bg-success">
               <h3>Servicio a Domicilio</h3>
               <button className="btn btn-danger" type="button" onClick={onHide}>
                 CANCELAR
@@ -245,7 +245,7 @@ function ModalDomicilio({ show, onHide, targetModalCaptura }) {
                 >
                   <div className="card-group">
                     {/* Formulario */}
-                    <div className="card bg-white">
+                    <div className="card">
                       <div className="card-header p-1 d-flex justify-content-between">
                         <button
                           onClick={nuevoCliente}
@@ -363,7 +363,7 @@ function ModalDomicilio({ show, onHide, targetModalCaptura }) {
                       </div>
                     </div>
                     {/* Busqueda */}
-                    <div className="card bg-white w-25">
+                    <div className="card w-25">
                       <div className="card-header p-1 d-flex justify-content-end">
                         <form
                           onSubmit={handleSubmitBusqueda}
