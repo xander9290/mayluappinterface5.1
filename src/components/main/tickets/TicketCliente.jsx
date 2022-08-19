@@ -160,58 +160,30 @@ function TicketCliente({ show, onHide, cuenta }) {
       keyboard="true"
     >
       <div id="ticket">
-        <div
-          style={{
-            display: settings.notaCliente.logoTitle === "" ? "none" : "block",
-          }}
-          id="logoContainer"
-        >
-          <div id="logo">
-            <h3 id="logoNameTitle">{settings.notaCliente.logoTitle}</h3>
-            <h5 id="logoSubName">{settings.notaCliente.logoSubtitle}</h5>
+        {settings.notaCliente.logoTitle !== "" && (
+          <div id="logoContainer">
+            <div id="logo">
+              <h3 id="logoNameTitle">{settings.notaCliente.logoTitle}</h3>
+              <h5 id="logoSubName">{settings.notaCliente.logoSubtitle}</h5>
+            </div>
           </div>
-        </div>
+        )}
         <div id="infoEmpresa">
-          <p
-            style={{
-              display:
-                settings.notaCliente.infoAddress1 === "" ? "none" : "block",
-            }}
-          >
-            {settings.notaCliente.infoAddress1}
-          </p>
-          <p
-            style={{
-              display:
-                settings.notaCliente.infoAddress2 === "" ? "none" : "block",
-            }}
-          >
-            {settings.notaCliente.infoAddress2}
-          </p>
-          <p
-            style={{
-              display:
-                settings.notaCliente.infoAddress3 === "" ? "none" : "block",
-            }}
-          >
-            {settings.notaCliente.infoAddress3}
-          </p>
-          <p
-            id="tel"
-            style={{
-              display: settings.notaCliente.infoTel === "" ? "none" : "block",
-            }}
-          >
-            tel: {settings.notaCliente.infoTel}
-          </p>
-          <p
-            id="wsap"
-            style={{
-              display: settings.notaCliente.infoWapp === "" ? "none" : "block",
-            }}
-          >
-            whatsapp: {settings.notaCliente.infoWapp}
-          </p>
+          {settings.notaCliente.infoAddress1 !== "" && (
+            <p>{settings.notaCliente.infoAddress1}</p>
+          )}
+          {settings.notaCliente.infoAddress2 !== "" && (
+            <p>{settings.notaCliente.infoAddress2}</p>
+          )}
+          {settings.notaCliente.infoAddress3 !== "" && (
+            <p>{settings.notaCliente.infoAddress3}</p>
+          )}
+          {settings.notaCliente.infoTel !== "" && (
+            <p id="tel">tel: {settings.notaCliente.infoTel}</p>
+          )}
+          {settings.notaCliente.infoWapp !== "" && (
+            <p id="wsap">whatsapp: {settings.notaCliente.infoWapp}</p>
+          )}
         </div>
         <div id="infoCuenta">
           <p>
@@ -257,32 +229,37 @@ function TicketCliente({ show, onHide, cuenta }) {
               </tr>
             </thead>
             <tbody>
-              {areas.map((item, i) => (
-                <tr
-                  style={{
-                    display: item.cancelado ? "none" : "",
-                  }}
-                  key={i}
-                >
-                  <td style={{ textAlign: "center" }} valign="top">
-                    {item.cant}
-                  </td>
-                  <td>
-                    <p>{item.name}</p>
-                    <small>
-                      {item.modificadores.map((m, i) => (
-                        <p key={i}>
-                          {">>"}
-                          {m.name} {m.price > 0 ? "$" + m.price : ""}
-                        </p>
-                      ))}
-                    </small>
-                  </td>
-                  <td style={{ textAlign: "start" }} valign="top">
-                    <p>${item.importe}</p>
-                  </td>
-                </tr>
-              ))}
+              {areas.map((item, i) => {
+                if (!item.cancelado) {
+                  return (
+                    <tr key={i}>
+                      <td style={{ textAlign: "center" }} valign="top">
+                        {item.cant}
+                      </td>
+                      <td>
+                        <p>{item.name}</p>
+                        <small>
+                          {item.modificadores.map((m, i) => (
+                            <p key={i}>
+                              {">>"}
+                              {m.name} {m.price > 0 ? "$" + m.price : ""}
+                            </p>
+                          ))}
+                        </small>
+                      </td>
+                      <td
+                        style={{
+                          textAlign: "center",
+                          paddingRight: "22px",
+                        }}
+                        valign="top"
+                      >
+                        <p>${item.importe}</p>
+                      </td>
+                    </tr>
+                  );
+                }
+              })}
             </tbody>
           </table>
           <hr></hr>
@@ -290,52 +267,32 @@ function TicketCliente({ show, onHide, cuenta }) {
         <div id="totalInfo">
           <small>
             <ul>
-              <li
-                style={{
-                  display: cuenta.cashInfo.dscto > 0 ? "block" : "none",
-                }}
-              >
-                subtotal: ${cuenta.cashInfo.importe}
-              </li>
-              <li
-                style={{
-                  display: cuenta.cashInfo.dscto > 0 ? "block" : "none",
-                }}
-              >
-                descuento: -${cuenta.cashInfo.dscto}
-              </li>
+              {cuenta.cashInfo.dscto > 0 && (
+                <li>subtotal: ${cuenta.cashInfo.importe}</li>
+              )}
+              {cuenta.cashInfo.dscto > 0 && (
+                <li>descuento: -${cuenta.cashInfo.dscto}</li>
+              )}
               <li>
                 <h2>total: ${cuenta.cashInfo.total}</h2>
               </li>
-              <li
-                style={{
-                  display: cuenta.cashInfo.efectivo > 0 ? "block" : "none",
-                }}
-              >
-                efectivo: ${cuenta.cashInfo.efectivo}
-              </li>
-              <li
-                style={{
-                  display: cuenta.cashInfo.tarjeta > 0 ? "block" : "none",
-                }}
-              >
-                Pago con tarjeta ${cuenta.cashInfo.tarjeta} +
-                {cuenta.cardInfo.porcentaje}%: ${cuenta.cardInfo.total}
-              </li>
-              <li
-                style={{
-                  display: cuenta.otroMedio.total > 0 ? "block" : "none",
-                }}
-              >
-                {cuenta.otroMedio.medio}: ${cuenta.otroMedio.total}
-              </li>
-              <li
-                style={{
-                  display: cuenta.cashInfo.cambio > 0 ? "block" : "none",
-                }}
-              >
-                cambio: ${cuenta.cashInfo.cambio}
-              </li>
+              {cuenta.cashInfo.efectivo > 0 && (
+                <li>efectivo: ${cuenta.cashInfo.efectivo}</li>
+              )}
+              {cuenta.cashInfo.tarjeta > 0 && (
+                <li>
+                  Pago con tarjeta ${cuenta.cashInfo.tarjeta} +
+                  {cuenta.cardInfo.porcentaje}%: ${cuenta.cardInfo.total}
+                </li>
+              )}
+              {cuenta.otroMedio.total > 0 && (
+                <li>
+                  {cuenta.otroMedio.medio}: ${cuenta.otroMedio.total}
+                </li>
+              )}
+              {cuenta.cashInfo.cambio > 0 && (
+                <li>cambio: ${cuenta.cashInfo.cambio}</li>
+              )}
             </ul>
             <div style={{ paddingLeft: "10px" }}>
               {numeroALetras(cuenta.cashInfo.total, {
@@ -346,30 +303,19 @@ function TicketCliente({ show, onHide, cuenta }) {
           </small>
           <hr></hr>
           <div id="footer">
-            <p
-              style={{
-                display:
-                  settings.notaCliente.footerMsg1 === "" ? "none" : "block",
-              }}
-            >
-              {settings.notaCliente.footerMsg1}
-            </p>
-            <small
-              style={{
-                display:
-                  settings.notaCliente.footerMsg2 === "" ? "none" : "block",
-              }}
-            >
-              <p>{settings.notaCliente.footerMsg2}</p>
-            </small>
-            <small
-              style={{
-                display:
-                  settings.notaCliente.footerMsg3 === "" ? "none" : "block",
-              }}
-            >
-              <p>{settings.notaCliente.footerMsg3}</p>
-            </small>
+            {settings.notaCliente.footerMsg1 !== "" && (
+              <p>{settings.notaCliente.footerMsg1}</p>
+            )}
+            {settings.notaCliente.footerMsg2 !== "" && (
+              <small>
+                <p>{settings.notaCliente.footerMsg2}</p>
+              </small>
+            )}
+            {settings.notaCliente.footerMsg3 !== "" && (
+              <small>
+                <p>{settings.notaCliente.footerMsg3}</p>
+              </small>
+            )}
           </div>
         </div>
       </div>

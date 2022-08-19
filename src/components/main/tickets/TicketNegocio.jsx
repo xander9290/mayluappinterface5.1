@@ -102,39 +102,41 @@ function TicketNegocio({ show, onHide, cuenta }) {
     if (settings.notaNegocio.areasVisibles.area1) {
       return (
         <Fragment>
-          {area1.length === 0 ? null : (
+          {area1.length > 0 && (
             <tr>
               <td colSpan="3">
                 <h5 style={{ textAlign: "center" }}>-----AREA 1-----</h5>
               </td>
             </tr>
           )}
-          {area1.map((item, i) => (
-            <tr
-              style={{
-                display: item.cancelado ? "none" : "",
-              }}
-              key={i}
-            >
-              <td style={{ textAlign: "center" }} valign="top">
-                {item.cant}
-              </td>
-              <td>
-                <p>{item.name}</p>
-                <small>
-                  {item.modificadores.map((m, i) => (
-                    <p key={i}>
-                      {">>"}
-                      {m.name} {m.price > 0 ? "$" + m.price : ""}
-                    </p>
-                  ))}
-                </small>
-              </td>
-              <td style={{ textAlign: "start" }} valign="top">
-                <p>${item.importe}</p>
-              </td>
-            </tr>
-          ))}
+          {area1.map((item, i) => {
+            if (!item.cancelado) {
+              return (
+                <tr key={i}>
+                  <td style={{ textAlign: "center" }} valign="top">
+                    {item.cant}
+                  </td>
+                  <td>
+                    <p>{item.name}</p>
+                    <small>
+                      {item.modificadores.map((m, i) => (
+                        <p key={i}>
+                          {">>"}
+                          {m.name} {m.price > 0 ? "$" + m.price : ""}
+                        </p>
+                      ))}
+                    </small>
+                  </td>
+                  <td
+                    style={{ textAlign: "center", paddingRight: "8px" }}
+                    valign="top"
+                  >
+                    <p>${item.importe}</p>
+                  </td>
+                </tr>
+              );
+            }
+          })}
         </Fragment>
       );
     }
@@ -143,39 +145,41 @@ function TicketNegocio({ show, onHide, cuenta }) {
     if (settings.notaNegocio.areasVisibles.area2) {
       return (
         <Fragment>
-          {area2.length === 0 ? null : (
+          {area2.length > 0 && (
             <tr>
               <td colSpan="3">
                 <h5 style={{ textAlign: "center" }}>-----AREA 2-----</h5>
               </td>
             </tr>
           )}
-          {area2.map((item, i) => (
-            <tr
-              style={{
-                display: item.cancelado ? "none" : "",
-              }}
-              key={i}
-            >
-              <td style={{ textAlign: "center" }} valign="top">
-                {item.cant}
-              </td>
-              <td>
-                <p>{item.name}</p>
-                <small>
-                  {item.modificadores.map((m, i) => (
-                    <p key={i}>
-                      {">>"}
-                      {m.name} {m.price > 0 ? "$" + m.price : ""}
-                    </p>
-                  ))}
-                </small>
-              </td>
-              <td style={{ textAlign: "start" }} valign="top">
-                <p>${item.importe}</p>
-              </td>
-            </tr>
-          ))}
+          {area2.map((item, i) => {
+            if (!item.cancelado) {
+              return (
+                <tr key={i}>
+                  <td style={{ textAlign: "center" }} valign="top">
+                    {item.cant}
+                  </td>
+                  <td>
+                    <p>{item.name}</p>
+                    <small>
+                      {item.modificadores.map((m, i) => (
+                        <p key={i}>
+                          {">>"}
+                          {m.name} {m.price > 0 ? "$" + m.price : ""}
+                        </p>
+                      ))}
+                    </small>
+                  </td>
+                  <td
+                    style={{ textAlign: "center", paddingRight: "8px" }}
+                    valign="top"
+                  >
+                    <p>${item.importe}</p>
+                  </td>
+                </tr>
+              );
+            }
+          })}
         </Fragment>
       );
     }
@@ -184,39 +188,41 @@ function TicketNegocio({ show, onHide, cuenta }) {
     if (settings.notaNegocio.areasVisibles.area3) {
       return (
         <Fragment>
-          {area3.length === 0 ? null : (
+          {area3.length > 0 && (
             <tr>
               <td colSpan="3">
                 <h5 style={{ textAlign: "center" }}>-----AREA 3-----</h5>
               </td>
             </tr>
           )}
-          {area3.map((item, i) => (
-            <tr
-              style={{
-                display: item.cancelado ? "none" : "",
-              }}
-              key={i}
-            >
-              <td style={{ textAlign: "center" }} valign="top">
-                {item.cant}
-              </td>
-              <td>
-                <p>{item.name}</p>
-                <small>
-                  {item.modificadores.map((m, i) => (
-                    <p key={i}>
-                      {">>"}
-                      {m.name} {m.price > 0 ? "$" + m.price : ""}
-                    </p>
-                  ))}
-                </small>
-              </td>
-              <td style={{ textAlign: "start" }} valign="top">
-                <p>${item.importe}</p>
-              </td>
-            </tr>
-          ))}
+          {area3.map((item, i) => {
+            if (!item.cancelado) {
+              return (
+                <tr key={i}>
+                  <td style={{ textAlign: "center" }} valign="top">
+                    {item.cant}
+                  </td>
+                  <td>
+                    <p>{item.name}</p>
+                    <small>
+                      {item.modificadores.map((m, i) => (
+                        <p key={i}>
+                          {">>"}
+                          {m.name} {m.price > 0 ? "$" + m.price : ""}
+                        </p>
+                      ))}
+                    </small>
+                  </td>
+                  <td
+                    style={{ textAlign: "center", paddingRight: "8px" }}
+                    valign="top"
+                  >
+                    <p>${item.importe}</p>
+                  </td>
+                </tr>
+              );
+            }
+          })}
         </Fragment>
       );
     }
@@ -225,39 +231,41 @@ function TicketNegocio({ show, onHide, cuenta }) {
     if (settings.notaNegocio.areasVisibles.area4) {
       return (
         <Fragment>
-          {area4.length === 0 ? null : (
+          {area4.length > 0 && (
             <tr>
               <td colSpan="3">
                 <h5 style={{ textAlign: "center" }}>-----AREA 4-----</h5>
               </td>
             </tr>
           )}
-          {area4.map((item, i) => (
-            <tr
-              style={{
-                display: item.cancelado ? "none" : "",
-              }}
-              key={i}
-            >
-              <td style={{ textAlign: "center" }} valign="top">
-                {item.cant}
-              </td>
-              <td>
-                <p>{item.name}</p>
-                <small>
-                  {item.modificadores.map((m, i) => (
-                    <p key={i}>
-                      {">>"}
-                      {m.name} {m.price > 0 ? "$" + m.price : ""}
-                    </p>
-                  ))}
-                </small>
-              </td>
-              <td style={{ textAlign: "start" }} valign="top">
-                ${item.importe}
-              </td>
-            </tr>
-          ))}
+          {area4.map((item, i) => {
+            if (!item.cancelado) {
+              return (
+                <tr key={i}>
+                  <td style={{ textAlign: "center" }} valign="top">
+                    {item.cant}
+                  </td>
+                  <td>
+                    <p>{item.name}</p>
+                    <small>
+                      {item.modificadores.map((m, i) => (
+                        <p key={i}>
+                          {">>"}
+                          {m.name} {m.price > 0 ? "$" + m.price : ""}
+                        </p>
+                      ))}
+                    </small>
+                  </td>
+                  <td
+                    style={{ textAlign: "center", paddingRight: "8px" }}
+                    valign="top"
+                  >
+                    ${item.importe}
+                  </td>
+                </tr>
+              );
+            }
+          })}
         </Fragment>
       );
     }
@@ -306,91 +314,49 @@ function TicketNegocio({ show, onHide, cuenta }) {
         <div id="totalInfo">
           <small>
             <ul>
-              <div
-                style={{
-                  display: settings.notaNegocio.totalInfo.subtotal
-                    ? "block"
-                    : "none",
-                }}
-              >
-                <li
-                  style={{
-                    display: cuenta.cashInfo.dscto > 0 ? "block" : "none",
-                  }}
-                >
-                  subtotal: ${cuenta.cashInfo.importe}
+              {settings.notaNegocio.totalInfo.subtotal && (
+                <div>
+                  {cuenta.cashInfo.dscto > 0 && (
+                    <li>subtotal: ${cuenta.cashInfo.importe}</li>
+                  )}
+                </div>
+              )}
+              {settings.notaNegocio.totalInfo.descuento && (
+                <div>
+                  {cuenta.cashInfo.dscto > 0 && (
+                    <li>descuento: -${cuenta.cashInfo.dscto}</li>
+                  )}
+                </div>
+              )}
+              {settings.notaNegocio.totalInfo.total && (
+                <li>
+                  <h2>total: ${cuenta.cashInfo.total}</h2>
                 </li>
-              </div>
-              <div
-                style={{
-                  display: settings.notaNegocio.totalInfo.descuento
-                    ? "block"
-                    : "none",
-                }}
-              >
-                <li
-                  style={{
-                    display: cuenta.cashInfo.dscto > 0 ? "block" : "none",
-                  }}
-                >
-                  descuento: -${cuenta.cashInfo.dscto}
-                </li>
-              </div>
-              <li
-                style={{
-                  display: settings.notaNegocio.totalInfo.total
-                    ? "block"
-                    : "none",
-                }}
-              >
-                <h2>total: ${cuenta.cashInfo.total}</h2>
-              </li>
-              <div
-                style={{
-                  display: settings.notaNegocio.totalInfo.efectivo
-                    ? "block"
-                    : "none",
-                }}
-              >
-                <li
-                  style={{
-                    display: cuenta.cashInfo.efectivo > 0 ? "block" : "none",
-                  }}
-                >
-                  efectivo: ${cuenta.cashInfo.efectivo}
-                </li>
-              </div>
-              <div
-                style={{
-                  display: settings.notaNegocio.totalInfo.tarjeta
-                    ? "block"
-                    : "none",
-                }}
-              >
-                <li
-                  style={{
-                    display: cuenta.cashInfo.tarjeta > 0 ? "block" : "none",
-                  }}
-                >
-                  Pago con tarjeta +{cuenta.cardInfo.porcetanje}%: $
-                  {cuenta.cardInfo.total}
-                </li>
-              </div>
-              <div
-                style={{
-                  display: settings.notaNegocio.totalInfo.cambio
-                    ? "block"
-                    : "none",
-                }}
-              >
-                <li
-                  style={{
-                    display: cuenta.cashInfo.cambio > 0 ? "block" : "none",
-                  }}
-                >
-                  cambio: ${cuenta.cashInfo.cambio}
-                </li>
-              </div>
+              )}
+              {settings.notaNegocio.totalInfo.efectivo && (
+                <div>
+                  {cuenta.cashInfo.efectivo > 0 && (
+                    <li>efectivo: ${cuenta.cashInfo.efectivo}</li>
+                  )}
+                </div>
+              )}
+              {settings.notaNegocio.totalInfo.tarjeta && (
+                <div>
+                  {cuenta.cashInfo.tarjeta > 0 && (
+                    <li>
+                      Pago con tarjeta +{cuenta.cardInfo.porcetanje}%: $
+                      {cuenta.cardInfo.total}
+                    </li>
+                  )}
+                </div>
+              )}
+              {settings.notaNegocio.totalInfo.cambio && (
+                <div>
+                  {cuenta.cashInfo.cambio > 0 && (
+                    <li>cambio: ${cuenta.cashInfo.cambio}</li>
+                  )}
+                </div>
+              )}
             </ul>
             <div style={{ paddingLeft: "10px" }}>
               {numeroALetras(cuenta.cashInfo.total, {

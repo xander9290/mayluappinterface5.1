@@ -12,6 +12,7 @@ function ModalCaptura({ show, onHide }) {
     productos,
     procesarCompuestos,
     session,
+    compuestos,
   } = appContext();
 
   const [obs, setObs] = useState({ obs: "" });
