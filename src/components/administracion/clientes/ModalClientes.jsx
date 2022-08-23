@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
+import { appContext } from "../../../context/MainContext";
+import Clock from "../../nav/Clock";
 import FormClientes from "./FormClientes";
 import TableClientes from "./TableClientes";
 

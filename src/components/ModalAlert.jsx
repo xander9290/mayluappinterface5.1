@@ -16,7 +16,7 @@ function ModalAlert({ show, onHide, msg }) {
           Atención
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="bg-white fs-5 text-uppercase p-2">
+      <Modal.Body className="bg-white fs-5 text-center text-uppercase p-2">
         {msg}
       </Modal.Body>
       <Modal.Footer className="bg-warning p-1">

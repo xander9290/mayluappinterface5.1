@@ -19,6 +19,7 @@ function Clock() {
       operador: null,
       rol: null,
     });
+    document.title = "Maylu App5.1";
   };
 
   useEffect(() => {

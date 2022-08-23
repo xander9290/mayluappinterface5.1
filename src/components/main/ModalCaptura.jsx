@@ -1,4 +1,4 @@
-import { useState, useContext, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { procesarItems } from "../../assets/helpers";
 import { appContext } from "../../context/MainContext";

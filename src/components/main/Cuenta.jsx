@@ -18,6 +18,7 @@ function Cuenta({ cuenta }) {
     createdAt,
     createdBy,
     impreso,
+    bloqueado,
     cashInfo,
     obs,
     items,
@@ -36,8 +37,7 @@ function Cuenta({ cuenta }) {
   return (
     <div
       style={{
-        pointerEvents: cuentaOcupada === _id ? "none" : "auto",
-        cursor: cuentaOcupada === _id ? "not-allowed" : "auto",
+        pointerEvents: bloqueado ? "none" : "auto",
       }}
       onClick={(e) => selectMySelf(e, _id)}
       className="col-md-3 p-1 text-uppercase"
@@ -47,10 +47,10 @@ function Cuenta({ cuenta }) {
         className={`card ${
           _id === cuentaId
             ? "bg-info"
-            : "bg-white" && cuentaOcupada === _id
+            : "bg-white" && bloqueado
             ? "bg-danger"
             : "bg-white"
-        } border-3`}
+        } border-4`}
       >
         <div className="card-header p-1">
           <h5 className="card-title text-uppercase d-flex justify-content-between">
@@ -58,11 +58,11 @@ function Cuenta({ cuenta }) {
             {cancelaciones && (
               <i className="bi bi-exclamation-circle text-danger"></i>
             )}
-            {cuentaOcupada === _id ? (
+            {bloqueado && (
               <span>
                 <i className="bi bi-pause-circle text-warning"></i>
               </span>
-            ) : null}
+            )}
             <span className="fw-bold">Orden: {orden}</span>
           </h5>
         </div>

@@ -66,7 +66,7 @@ function ModalInfoDomicilio({ show, onHide }) {
           </p>
           <p className="card-text fs-4 border-bottom border-success">
             <b>cruces: </b>
-            {cliente.tel}
+            {cliente.cruces}
           </p>
           <p className="card-text fs-4 border-bottom border-success">
             <b>colonia: </b>

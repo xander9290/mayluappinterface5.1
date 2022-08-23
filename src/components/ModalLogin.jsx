@@ -27,6 +27,7 @@ function ModalLogin({ show, onHide }) {
         `${operador.name} ha iniciado sesión`,
         "system"
       );
+      document.title = `Maylu App5.1-${operador.name.toUpperCase()}`;
       onHide();
     } else {
       setMsg(true);

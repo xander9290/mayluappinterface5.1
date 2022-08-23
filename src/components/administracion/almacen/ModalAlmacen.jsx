@@ -1,4 +1,7 @@
 import { Modal } from "react-bootstrap";
+import { appContext } from "../../../context/MainContext";
+import CategoriasContainer from "./categorias/CategoriasContainer";
+import ProductosContainer from "./productos/ProductosContainer";
 
 function ModalAlmacen({ show, onHide }) {
   return (
@@ -7,10 +10,9 @@ function ModalAlmacen({ show, onHide }) {
       show={show}
       backdrop="static"
       keyboard={false}
-      // dialogClassName="modal-admin"
-      size="xl"
+      dialogClassName="modal-admin"
     >
-      <div className="container-fluid main">
+      <div className="container-fluid main user-select-none">
         <div className="row">
           <div className="col-md-12 col-md-12 p-1 d-flex bg-success justify-content-between">
             <h3>Almacén</h3>
@@ -80,48 +82,48 @@ function ModalAlmacen({ show, onHide }) {
               </button>
             </div>
           </nav>
-          <div className="row">
-            <div className="tab-content">
-              <div
-                className="tab-pane fade show active"
-                id="almacenes"
-                role="tabpanel"
-                aria-labelledby=""
-              >
-                <h1>almacenes</h1>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="compuestos"
-                role="tabpanel"
-                aria-labelledby=""
-              >
-                <h1>compuestos</h1>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="categorias"
-                role="tabpanel"
-                aria-labelledby=""
-              >
-                <h1>categorías</h1>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="productos"
-                role="tabpanel"
-                aria-labelledby=""
-              >
-                <h1>productos</h1>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="estadistica"
-                role="tabpanel"
-                aria-labelledby=""
-              >
-                <h1>Estadística</h1>
-              </div>
+        </div>
+        <div className="row">
+          <div className="tab-content col-md-12 p-0">
+            <div
+              className="tab-pane fade show active"
+              id="almacenes"
+              role="tabpanel"
+              aria-labelledby=""
+            >
+              <h1>almacenes</h1>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="compuestos"
+              role="tabpanel"
+              aria-labelledby=""
+            >
+              <h1>compuestos</h1>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="categorias"
+              role="tabpanel"
+              aria-labelledby=""
+            >
+              <CategoriasContainer />
+            </div>
+            <div
+              className="tab-pane fade"
+              id="productos"
+              role="tabpanel"
+              aria-labelledby=""
+            >
+              <ProductosContainer />
+            </div>
+            <div
+              className="tab-pane fade"
+              id="estadistica"
+              role="tabpanel"
+              aria-labelledby=""
+            >
+              <h1>Estadística</h1>
             </div>
           </div>
         </div>
