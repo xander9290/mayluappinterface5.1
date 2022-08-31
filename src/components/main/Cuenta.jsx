@@ -107,10 +107,10 @@ function Cuenta({ cuenta }) {
             <small>folio: {folio}</small>
           </p>
         </div>
-        <div className="card-footer d-flex justify-content-between align-items-end p-0 px-2">
+        <div className="card-footer d-flex justify-content-between py-0">
           {impreso && <i className="bi bi-printer h3"></i>}
           {obs !== "" && <i className="bi bi-chat-dots h3"></i>}
-          <h3> ${cashInfo.total}</h3>
+          <span className="h3"> ${cashInfo.total}</span>
         </div>
       </div>
     </div>

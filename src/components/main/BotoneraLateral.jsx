@@ -41,6 +41,8 @@ function BotoneraLateral() {
 
   const [modalAlert, setModalAlert] = useState({ show: false, msg: "" });
 
+  const [isOpenDetalle, setIsOpenDetalle] = useState(false);
+
   useEffect(() => {
     if (cuenta._id) {
       if (cuenta.items.length === 0) return;
@@ -94,6 +96,7 @@ function BotoneraLateral() {
   const targetModalDetalle = () => {
     if (cuenta._id) {
       setModalDetalle(true);
+      setIsOpenDetalle(true);
     }
   };
 
@@ -234,7 +237,11 @@ function BotoneraLateral() {
         onHide={() => setModalDomicilio(false)}
         targetModalCaptura={targetModalCaptura}
       />
-      <ModalCaptura show={modalCaptura} onHide={() => setModalCaptura(false)} />
+      <ModalCaptura
+        show={modalCaptura}
+        onHide={() => setModalCaptura(false)}
+        isOpenDetalle={isOpenDetalle}
+      />
       <ModalDetalle
         show={modalDetalle}
         onHide={() => setModalDetalle(false)}
@@ -242,6 +249,7 @@ function BotoneraLateral() {
         reabrir={targetReabrir}
         targetModalTicketNegocio={targetModalTicketNegocio}
         targetPagarCuenta={targetPagarCuenta}
+        setIsOpenDetalle={setIsOpenDetalle}
       />
       <TicketNegocio
         show={modalTicketNegocio}

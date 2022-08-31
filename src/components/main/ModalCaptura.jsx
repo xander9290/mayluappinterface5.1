@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import { procesarItems } from "../../assets/helpers";
 import { appContext } from "../../context/MainContext";
 
-function ModalCaptura({ show, onHide }) {
+function ModalCaptura({ show, onHide, isOpenDetalle }) {
   const {
     cuenta,
     updateCuenta,
@@ -13,6 +13,7 @@ function ModalCaptura({ show, onHide }) {
     procesarCompuestos,
     session,
     compuestos,
+    selectCuenta,
   } = appContext();
 
   const [obs, setObs] = useState({ obs: "" });
@@ -169,7 +170,9 @@ function ModalCaptura({ show, onHide }) {
     setModificadoresbox([]);
     setItems([]);
     setTotal(0);
-    // cleanAreas();
+    if (!isOpenDetalle) {
+      selectCuenta("");
+    }
   };
 
   const selectItem = (idx) => {

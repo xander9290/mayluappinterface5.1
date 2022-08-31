@@ -70,7 +70,7 @@ function useCuenta() {
       setCuentas(chagedCuentas);
     };
 
-    const recebirCuentaBloqueada = (id) => {
+    const recebirCuentaBloqueada = async (id) => {
       // setCuentaOcupada(id);
       if (id === "") return;
       const chagedCuentas = cuentas.map((cuenta) => {
@@ -82,7 +82,7 @@ function useCuenta() {
       setCuentas(chagedCuentas);
     };
 
-    const recebirCuentaDesbloqueada = (id) => {
+    const recebirCuentaDesbloqueada = async (id) => {
       const chagedCuentas = cuentas.map((cuenta) => {
         if (cuenta._id === id) {
           cuenta.bloqueado = false;
@@ -143,6 +143,10 @@ function useCuenta() {
     setCuentas(chagedCuentas);
     setCuenta(data);
     socket.emit("updatedCuenta", data);
+    setTimeout(() => {
+      socket.emit("cuentaBloqueada", data._id);
+    }, 50);
+
     return true;
   };
 

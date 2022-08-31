@@ -17,6 +17,7 @@ function ModalDetalle({
   reabrir,
   targetModalTicketNegocio,
   targetPagarCuenta,
+  setIsOpenDetalle,
 }) {
   const { cuenta, updateCuenta, reiniciarCuenta, procesarCompuestos, session } =
     appContext();
@@ -116,6 +117,7 @@ function ModalDetalle({
   const handleExited = () => {
     setItemsIdx("");
     reiniciarCuenta();
+    setIsOpenDetalle(false);
   };
 
   return (

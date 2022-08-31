@@ -1,5 +1,4 @@
 import { Modal } from "react-bootstrap";
-import { appContext } from "../../../context/MainContext";
 import CategoriasContainer from "./categorias/CategoriasContainer";
 import ProductosContainer from "./productos/ProductosContainer";
 
@@ -14,7 +13,7 @@ function ModalAlmacen({ show, onHide }) {
     >
       <div className="container-fluid main user-select-none">
         <div className="row">
-          <div className="col-md-12 col-md-12 p-1 d-flex bg-success justify-content-between">
+          <div className="col-md-12 p-1 d-flex bg-success justify-content-between">
             <h3>Almacén</h3>
             <button className="btn btn-danger" type="button" onClick={onHide}>
               Cerrar

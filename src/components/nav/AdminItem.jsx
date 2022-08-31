@@ -2,7 +2,9 @@ import { useState } from "react";
 import { appContext } from "../../context/MainContext";
 import ModalAlmacen from "../administracion/almacen/ModalAlmacen";
 import ModalClientes from "../administracion/clientes/ModalClientes";
+import ModalConfig from "../administracion/configuracion/ModalConfig";
 import Operadores from "../administracion/operadores/Operadores";
+import ModalAdmin from "../ModalAdmin";
 
 function AdminItem() {
   const { session } = appContext();
@@ -10,17 +12,22 @@ function AdminItem() {
   const [modalClientes, setModalClientes] = useState(false);
   const [modalOperadores, setModalOperadores] = useState(false);
   const [modalAlmacen, setModalAlmacen] = useState(false);
+  const [modalConfig, setModalConfig] = useState(false);
 
   const targetModalAlmacen = () => {
-    setModalAlmacen(!modalAlmacen);
+    setModalAlmacen(true);
   };
 
   const targetModalClientes = () => {
-    setModalClientes(!modalClientes);
+    setModalClientes(true);
   };
 
   const targetModalOperadores = () => {
     setModalOperadores(true);
+  };
+
+  const targetModalConfig = () => {
+    setModalConfig(true);
   };
 
   return (
@@ -59,20 +66,25 @@ function AdminItem() {
           >
             Operadores
           </a>
-          <a href="#" className="dropdown-item fs-5 py-2">
-            Tickets
-          </a>
-          <a href="#" className="dropdown-item fs-5 py-2">
-            Caja
+          <a
+            onClick={targetModalConfig}
+            href="#"
+            className="dropdown-item fs-5 py-2"
+          >
+            Configuración
           </a>
         </div>
       </li>
-      <ModalAlmacen show={modalAlmacen} onHide={targetModalAlmacen} />
-      <ModalClientes show={modalClientes} onHide={targetModalClientes} />
+      <ModalAlmacen show={modalAlmacen} onHide={() => setModalAlmacen(false)} />
+      <ModalClientes
+        show={modalClientes}
+        onHide={() => setModalClientes(false)}
+      />
       <Operadores
         show={modalOperadores}
         onHide={() => setModalOperadores(false)}
       />
+      <ModalConfig show={modalConfig} onHide={() => setModalConfig(false)} />
     </>
   );
 }

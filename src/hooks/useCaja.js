@@ -39,7 +39,7 @@ function useCaja() {
   };
 
   const startCajonPlugin = async () => {
-    await routes.post(url + "/starcajonplugin");
+    //await routes.post(url + "/starcajonplugin");
   };
 
   const abrirCajon = async () => {
