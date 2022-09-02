@@ -54,66 +54,66 @@ function useCuenta() {
     cargarCuentas();
   }, []);
 
-  useEffect(() => {
-    const recebirNuevaCuenta = (newCuenta) => {
-      const newCuentas = [...cuentas, newCuenta];
-      setCuentas(newCuentas);
-    };
+  // useEffect(() => {
+  //   const recebirNuevaCuenta = (newCuenta) => {
+  //     const newCuentas = [...cuentas, newCuenta];
+  //     setCuentas(newCuentas);
+  //   };
 
-    const recebirUpdatedCuenta = (newCuenta) => {
-      const chagedCuentas = cuentas.map((cuenta) => {
-        if (cuenta._id === newCuenta._id) {
-          cuenta = newCuenta;
-        }
-        return cuenta;
-      });
-      setCuentas(chagedCuentas);
-    };
+  //   const recebirUpdatedCuenta = (newCuenta) => {
+  //     const chagedCuentas = cuentas.map((cuenta) => {
+  //       if (cuenta._id === newCuenta._id) {
+  //         cuenta = newCuenta;
+  //       }
+  //       return cuenta;
+  //     });
+  //     setCuentas(chagedCuentas);
+  //   };
 
-    const recebirCuentaBloqueada = async (id) => {
-      // setCuentaOcupada(id);
-      if (id === "") return;
-      const chagedCuentas = cuentas.map((cuenta) => {
-        if (cuenta._id === id) {
-          cuenta.bloqueado = true;
-        }
-        return cuenta;
-      });
-      setCuentas(chagedCuentas);
-    };
+  //   const recebirCuentaBloqueada = async (id) => {
+  //     // setCuentaOcupada(id);
+  //     if (id === "") return;
+  //     const chagedCuentas = cuentas.map((cuenta) => {
+  //       if (cuenta._id === id) {
+  //         cuenta.bloqueado = true;
+  //       }
+  //       return cuenta;
+  //     });
+  //     setCuentas(chagedCuentas);
+  //   };
 
-    const recebirCuentaDesbloqueada = async (id) => {
-      const chagedCuentas = cuentas.map((cuenta) => {
-        if (cuenta._id === id) {
-          cuenta.bloqueado = false;
-        }
-        return cuenta;
-      });
-      setCuentas(chagedCuentas);
-    };
+  //   const recebirCuentaDesbloqueada = async (id) => {
+  //     const chagedCuentas = cuentas.map((cuenta) => {
+  //       if (cuenta._id === id) {
+  //         cuenta.bloqueado = false;
+  //       }
+  //       return cuenta;
+  //     });
+  //     setCuentas(chagedCuentas);
+  //   };
 
-    socket.on("newCuenta", recebirNuevaCuenta);
-    socket.on("updatedCuenta", recebirUpdatedCuenta);
-    socket.on("cuentaBloqueada", recebirCuentaBloqueada);
-    socket.on("cuentaDesbloquear", recebirCuentaDesbloqueada);
+  //   socket.on("newCuenta", recebirNuevaCuenta);
+  //   socket.on("updatedCuenta", recebirUpdatedCuenta);
+  //   socket.on("cuentaBloqueada", recebirCuentaBloqueada);
+  //   socket.on("cuentaDesbloquear", recebirCuentaDesbloqueada);
 
-    return () => {
-      socket.off("newCuenta", recebirNuevaCuenta);
-      socket.off("updatedCuenta", recebirUpdatedCuenta);
-      socket.off("cuentaBloqueada", recebirCuentaBloqueada);
-      socket.off("cuentaDesbloquear", recebirCuentaDesbloqueada);
-    };
-  }, [cuentas]);
+  //   return () => {
+  //     socket.off("newCuenta", recebirNuevaCuenta);
+  //     socket.off("updatedCuenta", recebirUpdatedCuenta);
+  //     socket.off("cuentaBloqueada", recebirCuentaBloqueada);
+  //     socket.off("cuentaDesbloquear", recebirCuentaDesbloqueada);
+  //   };
+  // }, [cuentas]);
 
-  useEffect(() => {
-    if (cuentaId) {
-      socket.emit("cuentaDesbloquear", tempId);
-      socket.emit("cuentaBloqueada", cuentaId);
-      tempId = cuentaId;
-    } else {
-      socket.emit("cuentaDesbloquear", tempId);
-    }
-  }, [cuentaId]);
+  // useEffect(() => {
+  //   if (cuentaId) {
+  //     socket.emit("cuentaDesbloquear", tempId);
+  //     socket.emit("cuentaBloqueada", cuentaId);
+  //     tempId = cuentaId;
+  //   } else {
+  //     socket.emit("cuentaDesbloquear", tempId);
+  //   }
+  // }, [cuentaId]);
 
   const cargarCuentas = async () => {
     const data = await routes.get(url + "/activas");
@@ -125,10 +125,10 @@ function useCuenta() {
     const newCuentas = [...cuentas, data];
     setCuenta(data);
     setCuentas(newCuentas);
-    socket.emit("newCuenta", data);
-    setTimeout(() => {
-      socket.emit("cuentaBloqueada", data._id);
-    }, 100);
+    // socket.emit("newCuenta", data);
+    // setTimeout(() => {
+    //   socket.emit("cuentaBloqueada", data._id);
+    // }, 100);
     return { res: true, data };
   };
 
@@ -142,10 +142,10 @@ function useCuenta() {
     });
     setCuentas(chagedCuentas);
     setCuenta(data);
-    socket.emit("updatedCuenta", data);
-    setTimeout(() => {
-      socket.emit("cuentaBloqueada", data._id);
-    }, 50);
+    // socket.emit("updatedCuenta", data);
+    // setTimeout(() => {
+    //   socket.emit("cuentaBloqueada", data._id);
+    // }, 50);
 
     return true;
   };

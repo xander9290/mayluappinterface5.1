@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { formatearFecha, procesarItems } from "../../assets/helpers";
@@ -113,6 +114,10 @@ function ModalDetalle({
     }
     targetPagarCuenta();
   };
+
+  useEffect(() => {
+    console.log(cuenta);
+  }, [cuenta]);
 
   const handleExited = () => {
     setItemsIdx("");
