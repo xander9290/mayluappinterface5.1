@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import routes from "../assets/routes";
 import io from "socket.io-client";
 
@@ -32,7 +32,6 @@ export const initialCuenta = {
   obs: "",
 };
 
-let tempId = "";
 let url, urlSocket;
 if (process.env.NODE_ENV === "development") {
   url = "http://localhost:3100/cuentas";
@@ -45,6 +44,7 @@ if (process.env.NODE_ENV === "development") {
 const socket = io(urlSocket);
 
 function useCuenta() {
+  const tempId = useRef("");
   const [cuentas, setCuentas] = useState([]);
   const [cuenta, setCuenta] = useState(initialCuenta);
   const [cuentaId, setCuentaId] = useState(null);
@@ -54,66 +54,66 @@ function useCuenta() {
     cargarCuentas();
   }, []);
 
-  // useEffect(() => {
-  //   const recebirNuevaCuenta = (newCuenta) => {
-  //     const newCuentas = [...cuentas, newCuenta];
-  //     setCuentas(newCuentas);
-  //   };
+  useEffect(() => {
+    const recebirNuevaCuenta = (newCuenta) => {
+      const newCuentas = [...cuentas, newCuenta];
+      setCuentas(newCuentas);
+    };
 
-  //   const recebirUpdatedCuenta = (newCuenta) => {
-  //     const chagedCuentas = cuentas.map((cuenta) => {
-  //       if (cuenta._id === newCuenta._id) {
-  //         cuenta = newCuenta;
-  //       }
-  //       return cuenta;
-  //     });
-  //     setCuentas(chagedCuentas);
-  //   };
+    const recebirUpdatedCuenta = (newCuenta) => {
+      const chagedCuentas = cuentas.map((cuenta) => {
+        if (cuenta._id === newCuenta._id) {
+          cuenta = newCuenta;
+        }
+        return cuenta;
+      });
+      setCuentas(chagedCuentas);
+    };
 
-  //   const recebirCuentaBloqueada = async (id) => {
-  //     // setCuentaOcupada(id);
-  //     if (id === "") return;
-  //     const chagedCuentas = cuentas.map((cuenta) => {
-  //       if (cuenta._id === id) {
-  //         cuenta.bloqueado = true;
-  //       }
-  //       return cuenta;
-  //     });
-  //     setCuentas(chagedCuentas);
-  //   };
+    const recebirCuentaBloqueada = async (id) => {
+      // setCuentaOcupada(id);
+      if (id === "") return;
+      const chagedCuentas = cuentas.map((cuenta) => {
+        if (cuenta._id === id) {
+          cuenta.bloqueado = true;
+        }
+        return cuenta;
+      });
+      setCuentas(chagedCuentas);
+    };
 
-  //   const recebirCuentaDesbloqueada = async (id) => {
-  //     const chagedCuentas = cuentas.map((cuenta) => {
-  //       if (cuenta._id === id) {
-  //         cuenta.bloqueado = false;
-  //       }
-  //       return cuenta;
-  //     });
-  //     setCuentas(chagedCuentas);
-  //   };
+    const recebirCuentaDesbloqueada = async (id) => {
+      const chagedCuentas = cuentas.map((cuenta) => {
+        if (cuenta._id === id) {
+          cuenta.bloqueado = false;
+        }
+        return cuenta;
+      });
+      setCuentas(chagedCuentas);
+    };
 
-  //   socket.on("newCuenta", recebirNuevaCuenta);
-  //   socket.on("updatedCuenta", recebirUpdatedCuenta);
-  //   socket.on("cuentaBloqueada", recebirCuentaBloqueada);
-  //   socket.on("cuentaDesbloquear", recebirCuentaDesbloqueada);
+    socket.on("newCuenta", recebirNuevaCuenta);
+    socket.on("updatedCuenta", recebirUpdatedCuenta);
+    socket.on("cuentaBloqueada", recebirCuentaBloqueada);
+    socket.on("cuentaDesbloquear", recebirCuentaDesbloqueada);
 
-  //   return () => {
-  //     socket.off("newCuenta", recebirNuevaCuenta);
-  //     socket.off("updatedCuenta", recebirUpdatedCuenta);
-  //     socket.off("cuentaBloqueada", recebirCuentaBloqueada);
-  //     socket.off("cuentaDesbloquear", recebirCuentaDesbloqueada);
-  //   };
-  // }, [cuentas]);
+    return () => {
+      socket.off("newCuenta", recebirNuevaCuenta);
+      socket.off("updatedCuenta", recebirUpdatedCuenta);
+      socket.off("cuentaBloqueada", recebirCuentaBloqueada);
+      socket.off("cuentaDesbloquear", recebirCuentaDesbloqueada);
+    };
+  }, [cuentas]);
 
-  // useEffect(() => {
-  //   if (cuentaId) {
-  //     socket.emit("cuentaDesbloquear", tempId);
-  //     socket.emit("cuentaBloqueada", cuentaId);
-  //     tempId = cuentaId;
-  //   } else {
-  //     socket.emit("cuentaDesbloquear", tempId);
-  //   }
-  // }, [cuentaId]);
+  useEffect(() => {
+    if (cuentaId) {
+      socket.emit("cuentaDesbloquear", tempId.current);
+      socket.emit("cuentaBloqueada", cuentaId);
+      tempId.current = cuentaId;
+    } else {
+      socket.emit("cuentaDesbloquear", tempId);
+    }
+  }, [cuentaId]);
 
   const cargarCuentas = async () => {
     const data = await routes.get(url + "/activas");
@@ -125,10 +125,8 @@ function useCuenta() {
     const newCuentas = [...cuentas, data];
     setCuenta(data);
     setCuentas(newCuentas);
-    // socket.emit("newCuenta", data);
-    // setTimeout(() => {
-    //   socket.emit("cuentaBloqueada", data._id);
-    // }, 100);
+    setCuentaId(data._id);
+    socket.emit("newCuenta", data);
     return { res: true, data };
   };
 
@@ -142,11 +140,7 @@ function useCuenta() {
     });
     setCuentas(chagedCuentas);
     setCuenta(data);
-    // socket.emit("updatedCuenta", data);
-    // setTimeout(() => {
-    //   socket.emit("cuentaBloqueada", data._id);
-    // }, 50);
-
+    socket.emit("updatedCuenta", data);
     return true;
   };
 
@@ -158,7 +152,6 @@ function useCuenta() {
   const reiniciarCuenta = () => {
     setCuenta(initialCuenta);
     setCuentaId(null);
-    //socket.emit("cuentaOcupada", "");
   };
 
   const selectCuenta = (id) => {
@@ -168,12 +161,12 @@ function useCuenta() {
       if (findCuenta) {
         setCuenta(findCuenta);
         setCuentaId(id);
-        //socket.emit("cuentaOcupada", id);
       }
     } else {
       setCuenta(initialCuenta);
       setCuentaId(null);
-      //socket.emit("cuentaOcupada", "");
+      socket.emit("cuentaDesbloquear", tempId.current);
+      tempId.current = cuentaId;
     }
   };
 

@@ -126,13 +126,7 @@ function BotoneraLateral() {
       });
       return;
     }
-    if (cuenta.impreso) {
-      setModalAlert({
-        show: true,
-        msg: "la cuenta ya se encuentra impresa",
-      });
-      return;
-    }
+
     if (cuenta.servicio === "comedor") setModalComedor(true);
     if (cuenta.servicio === "pll") setModalParallevar(true);
     if (cuenta.servicio === "domicilio") setModalDomicilio(true);

@@ -170,9 +170,6 @@ function ModalCaptura({ show, onHide, isOpenDetalle }) {
     setModificadoresbox([]);
     setItems([]);
     setTotal(0);
-    // if (!isOpenDetalle) {
-    //   selectCuenta("");
-    // }
   };
 
   const selectItem = (idx) => {

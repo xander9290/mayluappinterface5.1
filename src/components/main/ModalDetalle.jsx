@@ -115,10 +115,6 @@ function ModalDetalle({
     targetPagarCuenta();
   };
 
-  useEffect(() => {
-    console.log(cuenta);
-  }, [cuenta]);
-
   const handleExited = () => {
     setItemsIdx("");
     reiniciarCuenta();
