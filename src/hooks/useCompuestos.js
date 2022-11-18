@@ -17,7 +17,7 @@ function useCompuestos() {
 
   const cargarCompuestos = async () => {
     const data = await routes.get(url);
-    setCompuestos(data);
+    setCompuestos(data.data);
   };
 
   const createCompuesto = async (body) => {
@@ -51,7 +51,7 @@ function useCompuestos() {
     const updatedCompuestos = producto.compuestos.map((currentCompuesto) => {
       compuestos.map((compuesto) => {
         if (currentCompuesto._id === compuesto._id) {
-          currentCompuesto.unidad = compuesto.unidad * cantidad;
+          currentCompuesto.cantidad = compuesto.cantidad * cantidad;
           currentCompuesto.price = compuesto.price * cantidad;
         }
         return compuesto;

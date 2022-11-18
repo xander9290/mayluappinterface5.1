@@ -9,6 +9,7 @@ import useOtrosMedios from "../hooks/useOtrosMedios";
 import useProductos from "../hooks/useProductos";
 import useSubcategorias from "../hooks/useSubcategorias";
 import useTickets from "../hooks/useTickets";
+import useAlmacen from "../hooks/useAlmacen";
 
 const AppContext = createContext();
 
@@ -44,6 +45,8 @@ function MainContext({ children }) {
     cargarCuentas,
     cuentaOcupada,
     getCuentasByFechas,
+    getCuentasByFecha,
+    getItems,
   } = useCuenta();
 
   const { categorias, createCategoria, updateCategoria, deleteCategoria } =
@@ -63,6 +66,9 @@ function MainContext({ children }) {
     useClientes();
 
   const { cajas, createCaja, deleteCaja, abrirCajon } = useCaja();
+
+  const { almacenes, createAlmacen, updateAlmacen, deleteAlmacen } =
+    useAlmacen();
 
   const {
     compuestos,
@@ -127,6 +133,13 @@ function MainContext({ children }) {
     cargarCuentas,
     cuentaOcupada,
     getCuentasByFechas,
+    getCuentasByFecha,
+    getItems,
+    // almacenes
+    almacenes,
+    createAlmacen,
+    updateAlmacen,
+    deleteAlmacen,
     // Compuestos
     compuestos,
     createCompuesto,

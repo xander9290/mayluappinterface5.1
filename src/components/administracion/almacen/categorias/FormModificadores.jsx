@@ -144,7 +144,7 @@ function FormModificadores({
                   required
                 >
                   <option value="">Tipo</option>
-                  <option value="mas">con</option>
+                  <option value="con">con</option>
                   <option value="sin">sin</option>
                 </select>
                 <select

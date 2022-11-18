@@ -1,5 +1,7 @@
 import { Modal } from "react-bootstrap";
+import AlmacenesContainer from "./almacenes/AlmacenesContainer";
 import CategoriasContainer from "./categorias/CategoriasContainer";
+import CompuestosContainer from "./compuestos/CompuestosContainer";
 import ProductosContainer from "./productos/ProductosContainer";
 
 function ModalAlmacen({ show, onHide }) {
@@ -90,7 +92,7 @@ function ModalAlmacen({ show, onHide }) {
               role="tabpanel"
               aria-labelledby=""
             >
-              <h1>almacenes</h1>
+              <AlmacenesContainer />
             </div>
             <div
               className="tab-pane fade"
@@ -98,7 +100,7 @@ function ModalAlmacen({ show, onHide }) {
               role="tabpanel"
               aria-labelledby=""
             >
-              <h1>compuestos</h1>
+              <CompuestosContainer />
             </div>
             <div
               className="tab-pane fade"

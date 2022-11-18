@@ -271,7 +271,6 @@ function ModalMonitor({ show, onHide }) {
 
       return r;
     }, []);
-
     list = result;
 
     const listSort = list.sort((a, b) => {
@@ -377,7 +376,7 @@ function ModalMonitor({ show, onHide }) {
   };
 
   const imprimirResumen = async () => {
-    //await abrirCajon();
+    await abrirCajon();
     setResumen(true);
   };
 

@@ -149,6 +149,18 @@ function useCuenta() {
     return data;
   };
 
+  const getCuentasByFecha = async (fecha) => {
+    const data = await routes.get(`${url}/historial/${fecha}`);
+    return data;
+  };
+
+  const getItems = async (gte, lte, cancelados) => {
+    const data = await routes.get(
+      `${url}/${gte}/${lte}/items?cancelado=${cancelados}`
+    );
+    return data.data;
+  };
+
   const reiniciarCuenta = () => {
     setCuenta(initialCuenta);
     setCuentaId(null);
@@ -183,6 +195,8 @@ function useCuenta() {
     initialCuenta,
     cuentaOcupada,
     getCuentasByFechas,
+    getCuentasByFecha,
+    getItems,
   };
 }
 

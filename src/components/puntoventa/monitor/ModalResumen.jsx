@@ -204,7 +204,7 @@ function ModalResumen({
               {cancelados.map((cuenta, i) => (
                 <div key={i * 6}>
                   <h4>
-                    -orden: {cuenta.orden} total: ${cuenta.total}
+                    -orden: {cuenta.orden} total: ${cuenta.cashInfo.importe}
                     <p>
                       -motivo:{" "}
                       {cuenta.motivoCancelado && cuenta.motivoCancelado}
